@@ -4,40 +4,47 @@
 int main()
 {
     //declaração de vetores
-    int v1[50]={1, 2, 3, 4, 5}, v2[50]={2, 5, 7, 1, -9, 18}, v3[50];
+    int v1[50]={1, 2, 3, 4, 5};
+    int v2[50]={2, 5, 7, 1, -9, 18};
+    int v3[50];
 
     //declaração de variáveis
-    int i, j, k, n1, n2, tam;
+    int i, j, n1, n2, atual, existe, tam;
 
     n1 = 5;
     n2 = 6;
+    tam = 0;
 
-    if (n1 > n2){
-        for (i=0; i<n1; i++){
-            for (j=0;j<n2; j++){
-                for (k=0; k<n1;k++){
-                    if (v1[i] == v2[j] || v1[i] != v2[j]){
-                        v3[i] = v1[i];
-                        v3[i] = v2[j];
-                    }
-                }
+    for (i = 0; i < n1; i++){
+        atual = v1[i];
+        existe = 0;
+        for (j=0; j < tam; j++){
+            if (v3[j] == atual){
+                existe = 1;
+                break;
             }
+        }
+        if (existe == 0){
+            v3[tam] = atual;
+            tam++;
         }
     }
 
-    if (n2 > n1){
-        for (j=0; j<n2; j++){
-            for (i=0;i<n1; i++){
-                for (k=0; k<n2;k++){
-                    if (v1[i] == v2[j] || v1[i] != v2[j]){
-                        v3[i] = v1[i];
-                        v3[i] = v2[j];
-                    }
-                }
+    for (i = 0; i < n2; i++){
+        atual = v2[i];
+        existe = 0;
+        for (j=0; j < tam; j++){
+            if (v3[j] == atual){
+                existe = 1;
+                break;
             }
         }
+        if (existe == 0){
+            v3[tam] = atual;
+            tam++;
+        }
     }
-    tam = sizeof(v3);
+
     for (i=0; i<tam; i++){
         printf("%d ", v3[i]);
     }
